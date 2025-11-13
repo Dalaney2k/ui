@@ -1,0 +1,8 @@
+<!-- Default Product Image SVG -->
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#f8fafc"/>
+  <rect x="40" y="60" width="120" height="80" fill="#e2e8f0" rx="8"/>
+  <circle cx="80" cy="90" r="8" fill="#cbd5e1"/>
+  <path d="M50 130l20-20 15 15 40-40v30H50v15z" fill="#cbd5e1"/>
+  <text x="100" y="170" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="14">Không có hình ảnh</text>
+</svg>

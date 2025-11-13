@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Filter Test</title>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .test-container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+      .filter-button {
+        display: inline-block;
+        padding: 8px 16px;
+        margin: 4px;
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        color: #333;
+      }
+      .filter-button:hover {
+        background: #e0e0e0;
+      }
+      .filter-button.active {
+        background: #007bff;
+        color: white;
+        border-color: #007bff;
+      }
+      .api-result {
+        background: #f8f9fa;
+        padding: 10px;
+        border-radius: 4px;
+        margin-top: 10px;
+        font-family: monospace;
+        font-size: 12px;
+        white-space: pre-wrap;
+      }
+      .error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+      .success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🧪 Admin Filter Test Page</h1>
+    <p>Test các API endpoints và filter logic của admin panel</p>
+
+    <div class="test-container">
+      <h3>🔗 Quick Filter Tests</h3>
+      <div id="quickFilters">
+        <a href="#" class="filter-button" data-filter="{}">Tất cả</a>
+        <a href="#" class="filter-button" data-filter='{"status":"Active"}'
+          >Đang bán</a
+        >
+        <a href="#" class="filter-button" data-filter='{"status":"Inactive"}'
+          >Tạm dừng</a
+        >
+        <a href="#" class="filter-button" data-filter='{"inStock":false}'
+          >Hết hàng</a
+        >
+        <a href="#" class="filter-button" data-filter='{"isFeatured":true}'
+          >Nổi bật</a
+        >
+        <a href="#" class="filter-button" data-filter='{"isNew":true}'>Mới</a>
+      </div>
+      <div id="quickFilterResult" class="api-result"></div>
+    </div>
+
+    <div class="test-container">
+      <h3>📊 Stats API Test</h3>
+      <button onclick="testStatsAPI()">Test Product Stats</button>
+      <div id="statsResult" class="api-result"></div>
+    </div>
+
+    <div class="test-container">
+      <h3>🔍 Search & Filter Test</h3>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search products..."
+        style="width: 200px; padding: 8px; margin-right: 10px"
+      />
+      <select id="categorySelect" style="padding: 8px; margin-right: 10px">
+        <option value="">All Categories</option>
+      </select>
+      <select id="brandSelect" style="padding: 8px; margin-right: 10px">
+        <option value="">All Brands</option>
+      </select>
+      <button onclick="testAdvancedFilter()">Apply Filters</button>
+      <div id="advancedFilterResult" class="api-result"></div>
+    </div>
+
+    <script>
+      const API_BASE = "https://localhost:7146/api";
+      let authToken = null;
+
+      // Try to get token from localStorage (if admin is logged in)
+      const storedAuth = localStorage.getItem("adminAuth");
+      if (storedAuth) {
+        const authData = JSON.parse(storedAuth);
+        authToken = authData.token;
+      }
+
+      function getHeaders() {
+        const headers = {
+          "Content-Type": "application/json",
+        };
+        if (authToken) {
+          headers["Authorization"] = `Bearer ${authToken}`;
+        }
+        return headers;
+      }
+
+      // Test quick filters
+      document
+        .querySelectorAll("#quickFilters .filter-button")
+        .forEach((button) => {
+          button.addEventListener("click", async (e) => {
+            e.preventDefault();
+
+            // Remove active class from all buttons
+            document
+              .querySelectorAll("#quickFilters .filter-button")
+              .forEach((b) => b.classList.remove("active"));
+            // Add active class to clicked button
+            e.target.classList.add("active");
+
+            const filterData = JSON.parse(e.target.dataset.filter);
+            await testProductsAPI(filterData);
+          });
+        });
+
+      async function testProductsAPI(filters = {}) {
+        const resultDiv = document.getElementById("quickFilterResult");
+        resultDiv.textContent = "Loading...";
+
+        try {
+          const params = new URLSearchParams({
+            page: 1,
+            pageSize: 10,
+            ...filters,
+          });
+
+          const response = await fetch(`${API_BASE}/products?${params}`, {
+            headers: getHeaders(),
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            resultDiv.className = "api-result success";
+            resultDiv.textContent =
+              `✅ Success (${response.status})\n` +
+              `Products: ${data.items?.length || 0}\n` +
+              `Total: ${data.pagination?.totalItems || 0}\n` +
+              `Applied Filters: ${JSON.stringify(filters, null, 2)}\n` +
+              `Response: ${JSON.stringify(data, null, 2)}`;
+          } else {
+            throw new Error(
+              `${response.status}: ${data.message || "API Error"}`
+            );
+          }
+        } catch (error) {
+          resultDiv.className = "api-result error";
+          resultDiv.textContent = `❌ Error: ${error.message}`;
+        }
+      }
+
+      async function testStatsAPI() {
+        const resultDiv = document.getElementById("statsResult");
+        resultDiv.textContent = "Loading...";
+
+        try {
+          const response = await fetch(`${API_BASE}/analytics/products`, {
+            headers: getHeaders(),
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            resultDiv.className = "api-result success";
+            resultDiv.textContent =
+              `✅ Stats Success (${response.status})\n` +
+              JSON.stringify(data, null, 2);
+          } else {
+            throw new Error(
+              `${response.status}: ${data.message || "Stats API Error"}`
+            );
+          }
+        } catch (error) {
+          resultDiv.className = "api-result error";
+          resultDiv.textContent = `❌ Stats Error: ${error.message}`;
+        }
+      }
+
+      async function testAdvancedFilter() {
+        const resultDiv = document.getElementById("advancedFilterResult");
+        resultDiv.textContent = "Loading...";
+
+        const filters = {
+          page: 1,
+          pageSize: 10,
+        };
+
+        const search = document.getElementById("searchInput").value.trim();
+        const category = document.getElementById("categorySelect").value;
+        const brand = document.getElementById("brandSelect").value;
+
+        if (search) filters.search = search;
+        if (category) filters.categoryId = category;
+        if (brand) filters.brandId = brand;
+
+        try {
+          const params = new URLSearchParams(filters);
+          const response = await fetch(`${API_BASE}/products?${params}`, {
+            headers: getHeaders(),
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            resultDiv.className = "api-result success";
+            resultDiv.textContent =
+              `✅ Advanced Filter Success (${response.status})\n` +
+              `Products: ${data.items?.length || 0}\n` +
+              `Total: ${data.pagination?.totalItems || 0}\n` +
+              `Applied Filters: ${JSON.stringify(filters, null, 2)}\n` +
+              `Response: ${JSON.stringify(data, null, 2)}`;
+          } else {
+            throw new Error(
+              `${response.status}: ${data.message || "API Error"}`
+            );
+          }
+        } catch (error) {
+          resultDiv.className = "api-result error";
+          resultDiv.textContent = `❌ Advanced Filter Error: ${error.message}`;
+        }
+      }
+
+      // Load categories and brands on page load
+      async function loadDropdownData() {
+        try {
+          // Load categories
+          const categoriesResponse = await fetch(`${API_BASE}/categories`, {
+            headers: getHeaders(),
+          });
+          if (categoriesResponse.ok) {
+            const categories = await categoriesResponse.json();
+            const categorySelect = document.getElementById("categorySelect");
+            (categories.items || categories || []).forEach((cat) => {
+              const option = document.createElement("option");
+              option.value = cat.id;
+              option.textContent = cat.name;
+              categorySelect.appendChild(option);
+            });
+          }
+
+          // Load brands
+          const brandsResponse = await fetch(`${API_BASE}/brands`, {
+            headers: getHeaders(),
+          });
+          if (brandsResponse.ok) {
+            const brands = await brandsResponse.json();
+            const brandSelect = document.getElementById("brandSelect");
+            (brands.items || brands || []).forEach((brand) => {
+              const option = document.createElement("option");
+              option.value = brand.id;
+              option.textContent = brand.name;
+              brandSelect.appendChild(option);
+            });
+          }
+        } catch (error) {
+          console.error("Error loading dropdown data:", error);
+        }
+      }
+
+      // Initialize
+      if (!authToken) {
+        document.body.innerHTML = `
+                <div style="text-align: center; padding: 40px;">
+                    <h2>⚠️ Authentication Required</h2>
+                    <p>Please log in to admin panel first, then reload this page.</p>
+                    <p><a href="/admin/login">Go to Admin Login</a></p>
+                </div>
+            `;
+      } else {
+        loadDropdownData();
+        // Test "All" filter on page load
+        testProductsAPI({});
+      }
+    </script>
+  </body>
+</html>

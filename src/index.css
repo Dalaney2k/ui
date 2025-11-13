@@ -1,0 +1,357 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: #222;
+  background-color: #f7fafc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f7fafc;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+h1 {
+  font-size: 2.4em;
+  line-height: 1.1;
+  margin: 0.5em 0;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Responsive helper (tuỳ bạn thêm) */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.7em;
+  }
+  .card {
+    padding: 1em;
+  }
+}
+
+/* Cart Slide Animation */
+.cart-slide-enter {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.cart-slide-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 300ms ease-out, opacity 300ms ease-out;
+}
+
+.cart-slide-exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.cart-slide-exit-active {
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 300ms ease-in, opacity 300ms ease-in;
+}
+
+/* Cart Item Animation */
+@keyframes cartItemSlideIn {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.cart-item-enter {
+  animation: cartItemSlideIn 0.3s ease-out;
+}
+
+/* Shopping Cart Overlay */
+.cart-overlay {
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Quantity Button Hover Effects */
+.quantity-btn {
+  transition: all 0.2s ease;
+}
+
+.quantity-btn:hover {
+  transform: scale(1.1);
+}
+
+.quantity-btn:active {
+  transform: scale(0.95);
+}
+
+/* Checkout Button Animation */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.checkout-btn:hover {
+  animation: pulse 1s infinite;
+}
+
+/* Cart Empty State Animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.cart-empty-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Cart */
+.cart-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #e5e7eb #f9fafb;
+}
+
+.cart-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cart-scrollbar::-webkit-scrollbar-track {
+  background: #f9fafb;
+  border-radius: 3px;
+}
+
+.cart-scrollbar::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 3px;
+}
+
+.cart-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #d1d5db;
+}
+
+/* ===== PERFORMANCE & FLICKER FIXES ===== */
+
+/* 🚀 GPU Acceleration for smooth animations */
+.header-gpu-optimized {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* 🎯 Prevent layout shift and content flicker */
+.prevent-layout-shift {
+  contain: layout style paint;
+  content-visibility: auto;
+}
+
+/* ⚡ Animation performance improvements */
+/* Header animations - Smooth transitions with minimal flicker */
+.header-container {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Top Bar - Smooth slide animation */
+.header-top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: linear-gradient(to right, #ef4444, #f87171, #fca5a5);
+  color: white;
+  padding: 8px 0;
+  text-align: center;
+  font-size: 0.875rem;
+  transform: translateY(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.header-top-bar.hidden {
+  transform: translateY(-100%);
+}
+
+/* Main Header - Smooth compact transition */
+.header-main {
+  position: sticky;
+  top: 0;
+  z-index: 998;
+  background: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, background-color, backdrop-filter;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.header-main.compact {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Logo smooth scaling */
+.logo-container {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.logo-small {
+  transform: scale(0.85);
+}
+
+.logo-normal {
+  transform: scale(1);
+}
+
+/* Logo text transitions */
+.logo-text {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.logo-text-hidden {
+  opacity: 0.7;
+  transform: translateY(-2px) scale(0.95);
+}
+
+.logo-text-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* GPU Acceleration for smooth animations */
+.no-flicker {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Simple anti-flicker */
+.no-flicker {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.smooth-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 📱 Mobile optimization */
+@media (max-width: 768px) {
+  .mobile-optimized {
+    transform: translate3d(0, 0, 0);
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* 🎨 Reduce repaint on scroll */
+.scroll-optimized {
+  contain: style layout;
+  will-change: transform;
+}
+
+/* ✨ Prevent flash of unstyled content */
+.no-fouc {
+  opacity: 0;
+  animation: fadeInOnLoad 0.3s ease-out forwards;
+}
+
+@keyframes fadeInOnLoad {
+  to {
+    opacity: 1;
+  }
+}
+
+/* 🌟 Product loading optimizations */
+.product-card-optimized {
+  will-change: transform;
+  contain: layout style paint;
+  transform: translateZ(0);
+}
+
+.product-card-optimized:hover {
+  transform: translateY(-2px) translateZ(0);
+}
+
+/* 🚀 Image loading optimization */
+.image-fade-in {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-fade-in.loaded {
+  opacity: 1;
+}
+
+/* 💫 Skeleton loading animations */
+.skeleton-pulse {
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0% {
+    background-color: #f3f4f6;
+  }
+  50% {
+    background-color: #e5e7eb;
+  }
+  100% {
+    background-color: #f3f4f6;
+  }
+}
+
+/* 🎯 Grid layout optimization to prevent shifts */
+.stable-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  contain: layout;
+}

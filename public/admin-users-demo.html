@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Users - Tier Colors Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 2rem;
+      }
+      .card {
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .tier-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        font-weight: 700;
+        font-size: 0.875rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+      }
+      .tier-badge:hover {
+        transform: scale(1.05);
+      }
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      @media (max-width: 768px) {
+        .comparison-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1 class="text-3xl font-bold text-center mb-2 text-gray-800">
+        🎨 Admin Users - Tier Colors Update
+      </h1>
+      <p class="text-center text-gray-600 mb-8">
+        Màu sắc mới cho từng hạng thành viên với gradient đẹp mắt
+      </p>
+
+      <!-- New Tier Colors -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">
+          ✨ Màu Mới (Gradient)
+        </h2>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <span
+            class="tier-badge bg-gradient-to-r from-amber-600 to-orange-600 text-white"
+          >
+            🥉 Bronze
+          </span>
+          <span
+            class="tier-badge bg-gradient-to-r from-slate-300 to-slate-400 text-gray-900"
+          >
+            🥈 Silver
+          </span>
+          <span
+            class="tier-badge bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900"
+          >
+            🥇 Gold
+          </span>
+          <span
+            class="tier-badge bg-gradient-to-r from-slate-400 to-slate-500 text-white"
+          >
+            💎 Platinum
+          </span>
+        </div>
+      </div>
+
+      <!-- Old vs New Comparison -->
+      <div class="comparison-grid">
+        <div class="bg-red-50 p-4 rounded-lg border-2 border-red-200">
+          <h3 class="text-lg font-bold mb-3 text-red-700">
+            ❌ Màu Cũ (Đơn sắc)
+          </h3>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between p-2 bg-white rounded">
+              <span class="text-sm text-gray-600">Bronze</span>
+              <span
+                class="px-3 py-1 rounded-full text-sm font-bold bg-orange-400 text-white"
+                >Bronze</span
+              >
+            </div>
+            <div class="flex items-center justify-between p-2 bg-white rounded">
+              <span class="text-sm text-gray-600">Silver</span>
+              <span
+                class="px-3 py-1 rounded-full text-sm font-bold bg-blue-400 text-white"
+                >Silver</span
+              >
+            </div>
+            <div class="flex items-center justify-between p-2 bg-white rounded">
+              <span class="text-sm text-gray-600">Gold</span>
+              <span
+                class="px-3 py-1 rounded-full text-sm font-bold bg-yellow-400 text-gray-900"
+                >Gold</span
+              >
+            </div>
+            <div class="flex items-center justify-between p-2 bg-white rounded">
+              <span class="text-sm text-gray-600">Platinum</span>
+              <span
+                class="px-3 py-1 rounded-full text-sm font-bold bg-gray-400 text-white"
+                >Platinum</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-green-50 p-4 rounded-lg border-2 border-green-200">
+          <h3 class="text-lg font-bold mb-3 text-green-700">
+            ✅ Màu Mới (Gradient)
+          </h3>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between p-2 bg-white rounded">
+              <span class="text-sm text-gray-600">Bronze</span>
+              <span
+                class="px-3 py-1 rounded-full text-sm font-bold bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-md"
+                >Bronze</span
+              >
+            </div>
+            <div class="flex items-center justify-between p-2 bg-white rounded">
+              <span class="text-sm text-gray-600">Silver</span>
+              <span
+                class="px-3 py-1 rounded-full text-sm font-bold bg-gradient-to-r from-slate-300 to-slate-400 text-gray-900 shadow-md"
+                >Silver</span
+              >
+            </div>
+            <div class="flex items-center justify-between p-2 bg-white rounded">
+              <span class="text-sm text-gray-600">Gold</span>
+              <span
+                class="px-3 py-1 rounded-full text-sm font-bold bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900 shadow-md"
+                >Gold</span
+              >
+            </div>
+            <div class="flex items-center justify-between p-2 bg-white rounded">
+              <span class="text-sm text-gray-600">Platinum</span>
+              <span
+                class="px-3 py-1 rounded-full text-sm font-bold bg-gradient-to-r from-slate-400 to-slate-500 text-white shadow-md"
+                >Platinum</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons Demo -->
+      <div class="mt-8 p-6 bg-gray-50 rounded-lg">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">🔧 Action Buttons</h2>
+        <div class="flex gap-3 justify-center">
+          <button
+            class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors flex items-center gap-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            Xem chi tiết
+          </button>
+          <button
+            class="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors flex items-center gap-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+              ></path>
+              <path
+                d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+              ></path>
+            </svg>
+            Chỉnh sửa
+          </button>
+          <button
+            class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors flex items-center gap-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path
+                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+              ></path>
+            </svg>
+            Xóa
+          </button>
+        </div>
+      </div>
+
+      <!-- Feature List -->
+      <div
+        class="mt-8 p-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg border border-blue-200"
+      >
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">🎯 Các cải tiến</h2>
+        <ul class="space-y-2 text-gray-700">
+          <li class="flex items-start gap-2">
+            <span class="text-green-500 font-bold">✓</span>
+            <span
+              ><strong>Màu sắc Tier mới:</strong> Mỗi hạng một gradient riêng
+              biệt đẹp mắt hơn</span
+            >
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-500 font-bold">✓</span>
+            <span
+              ><strong>Lấy đầy đủ thông tin:</strong> Gọi API getUserById() khi
+              xem và sửa</span
+            >
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-500 font-bold">✓</span>
+            <span
+              ><strong>Nút xóa:</strong> Thay nút 3 chấm dọc bằng nút xóa với
+              icon Trash2</span
+            >
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-500 font-bold">✓</span>
+            <span
+              ><strong>Tổng chi tiêu:</strong> Xử lý đúng cả totalSpent và
+              total_spent</span
+            >
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-500 font-bold">✓</span>
+            <span
+              ><strong>Xử lý Tier:</strong> Hỗ trợ cả số (1,2,3,4) và chuỗi
+              (Bronze, Silver...)</span
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Footer -->
+      <div class="mt-8 text-center text-gray-500 text-sm">
+        <p>
+          💡 Xem file
+          <code class="bg-gray-200 px-2 py-1 rounded"
+            >ADMIN_USERS_IMPROVEMENTS.md</code
+          >
+          để biết thêm chi tiết
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

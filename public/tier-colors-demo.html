@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tier Colors - All 5 Tiers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 2rem;
+      }
+      .tier-card {
+        transition: all 0.3s ease;
+      }
+      .tier-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+      .badge {
+        transition: transform 0.2s;
+      }
+      .badge:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-8">
+        <h1 class="text-5xl font-bold text-white mb-4">
+          💎 Tier System - Complete Colors
+        </h1>
+        <p class="text-white text-opacity-90 text-lg">
+          Đầy đủ 5 hạng thành viên với gradient đẹp mắt
+        </p>
+      </div>
+
+      <!-- Grid of Tier Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <!-- Bronze Tier -->
+        <div class="tier-card bg-white rounded-2xl p-6 shadow-2xl">
+          <div class="text-center">
+            <div class="text-6xl mb-4">🥉</div>
+            <div
+              class="badge px-6 py-3 rounded-full text-lg font-bold bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg inline-block mb-4"
+            >
+              Bronze
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Tier 1 - Bronze</h3>
+            <p class="text-gray-600 mb-4">Hạng đồng - Thành viên mới</p>
+            <div class="bg-amber-50 rounded-lg p-3">
+              <code class="text-xs text-amber-800"
+                >from-amber-600 to-orange-600</code
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Silver Tier -->
+        <div class="tier-card bg-white rounded-2xl p-6 shadow-2xl">
+          <div class="text-center">
+            <div class="text-6xl mb-4">🥈</div>
+            <div
+              class="badge px-6 py-3 rounded-full text-lg font-bold bg-gradient-to-r from-slate-300 to-slate-400 text-gray-900 shadow-lg inline-block mb-4"
+            >
+              Silver
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Tier 2 - Silver</h3>
+            <p class="text-gray-600 mb-4">Hạng bạc - Thành viên trung thành</p>
+            <div class="bg-slate-50 rounded-lg p-3">
+              <code class="text-xs text-slate-800"
+                >from-slate-300 to-slate-400</code
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Gold Tier -->
+        <div class="tier-card bg-white rounded-2xl p-6 shadow-2xl">
+          <div class="text-center">
+            <div class="text-6xl mb-4">🥇</div>
+            <div
+              class="badge px-6 py-3 rounded-full text-lg font-bold bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900 shadow-lg inline-block mb-4"
+            >
+              Gold
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Tier 3 - Gold</h3>
+            <p class="text-gray-600 mb-4">Hạng vàng - Khách hàng VIP</p>
+            <div class="bg-yellow-50 rounded-lg p-3">
+              <code class="text-xs text-yellow-800"
+                >from-yellow-400 to-amber-500</code
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Platinum Tier -->
+        <div class="tier-card bg-white rounded-2xl p-6 shadow-2xl">
+          <div class="text-center">
+            <div class="text-6xl mb-4">💎</div>
+            <div
+              class="badge px-6 py-3 rounded-full text-lg font-bold bg-gradient-to-r from-slate-400 to-slate-500 text-white shadow-lg inline-block mb-4"
+            >
+              Platinum
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Tier 4 - Platinum</h3>
+            <p class="text-gray-600 mb-4">Hạng bạch kim - Khách hàng VVIP</p>
+            <div class="bg-slate-100 rounded-lg p-3">
+              <code class="text-xs text-slate-800"
+                >from-slate-400 to-slate-500</code
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Diamond Tier -->
+        <div
+          class="tier-card bg-white rounded-2xl p-6 shadow-2xl lg:col-span-2"
+        >
+          <div class="text-center">
+            <div class="text-6xl mb-4">💠</div>
+            <div
+              class="badge px-6 py-3 rounded-full text-lg font-bold bg-gradient-to-r from-cyan-400 to-blue-500 text-white shadow-lg inline-block mb-4 animate-pulse"
+            >
+              Diamond ✨
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Tier 5 - Diamond</h3>
+            <p class="text-gray-600 mb-4">
+              Hạng kim cương - Khách hàng đặc biệt nhất
+            </p>
+            <div class="bg-cyan-50 rounded-lg p-3 inline-block">
+              <code class="text-xs text-cyan-800"
+                >from-cyan-400 to-blue-500</code
+              >
+            </div>
+            <div
+              class="mt-4 bg-gradient-to-r from-cyan-100 to-blue-100 rounded-lg p-4"
+            >
+              <p class="text-sm text-gray-700">
+                ✨ <strong>NEW!</strong> Tier đặc biệt được thêm vào để phân
+                biệt khách hàng cao cấp nhất
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="bg-white rounded-2xl shadow-2xl overflow-hidden mb-8">
+        <div class="bg-gradient-to-r from-purple-600 to-indigo-600 p-6">
+          <h2 class="text-2xl font-bold text-white text-center">
+            📊 Bảng so sánh đầy đủ
+          </h2>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-4 text-left text-sm font-bold text-gray-700">
+                  Level
+                </th>
+                <th class="px-6 py-4 text-left text-sm font-bold text-gray-700">
+                  Tên
+                </th>
+                <th class="px-6 py-4 text-left text-sm font-bold text-gray-700">
+                  Badge
+                </th>
+                <th class="px-6 py-4 text-left text-sm font-bold text-gray-700">
+                  Gradient
+                </th>
+                <th class="px-6 py-4 text-left text-sm font-bold text-gray-700">
+                  Text Color
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr class="hover:bg-amber-50 transition-colors">
+                <td class="px-6 py-4 text-2xl font-bold">1</td>
+                <td class="px-6 py-4 font-medium">🥉 Bronze</td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-md inline-block"
+                  >
+                    Bronze
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-sm text-gray-600">
+                  amber-600 → orange-600
+                </td>
+                <td
+                  class="px-6 py-4 text-sm font-semibold text-white bg-gray-800 rounded inline-block px-3"
+                >
+                  White
+                </td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition-colors">
+                <td class="px-6 py-4 text-2xl font-bold">2</td>
+                <td class="px-6 py-4 font-medium">🥈 Silver</td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-slate-300 to-slate-400 text-gray-900 shadow-md inline-block"
+                  >
+                    Silver
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-sm text-gray-600">
+                  slate-300 → slate-400
+                </td>
+                <td
+                  class="px-6 py-4 text-sm font-semibold text-gray-900 bg-gray-200 rounded inline-block px-3"
+                >
+                  Gray-900
+                </td>
+              </tr>
+              <tr class="hover:bg-yellow-50 transition-colors">
+                <td class="px-6 py-4 text-2xl font-bold">3</td>
+                <td class="px-6 py-4 font-medium">🥇 Gold</td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900 shadow-md inline-block"
+                  >
+                    Gold
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-sm text-gray-600">
+                  yellow-400 → amber-500
+                </td>
+                <td
+                  class="px-6 py-4 text-sm font-semibold text-gray-900 bg-gray-200 rounded inline-block px-3"
+                >
+                  Gray-900
+                </td>
+              </tr>
+              <tr class="hover:bg-slate-100 transition-colors">
+                <td class="px-6 py-4 text-2xl font-bold">4</td>
+                <td class="px-6 py-4 font-medium">💎 Platinum</td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-slate-400 to-slate-500 text-white shadow-md inline-block"
+                  >
+                    Platinum
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-sm text-gray-600">
+                  slate-400 → slate-500
+                </td>
+                <td
+                  class="px-6 py-4 text-sm font-semibold text-white bg-gray-800 rounded inline-block px-3"
+                >
+                  White
+                </td>
+              </tr>
+              <tr class="hover:bg-cyan-50 transition-colors bg-cyan-50">
+                <td class="px-6 py-4 text-2xl font-bold">5 ✨</td>
+                <td class="px-6 py-4 font-medium">💠 Diamond</td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-4 py-2 rounded-full text-sm font-bold bg-gradient-to-r from-cyan-400 to-blue-500 text-white shadow-md inline-block"
+                  >
+                    Diamond
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-sm text-gray-600">
+                  cyan-400 → blue-500
+                </td>
+                <td
+                  class="px-6 py-4 text-sm font-semibold text-white bg-gray-800 rounded inline-block px-3"
+                >
+                  White
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Performance Info -->
+      <div class="bg-white rounded-2xl shadow-2xl p-8">
+        <h2 class="text-3xl font-bold mb-6 text-center">
+          ⚡ Performance Improvements
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="text-center p-6 bg-green-50 rounded-xl">
+            <div class="text-4xl mb-3">🚀</div>
+            <div class="text-3xl font-bold text-green-600 mb-2">0ms</div>
+            <div class="text-sm text-gray-700">
+              Không còn loading khi click nút
+            </div>
+          </div>
+          <div class="text-center p-6 bg-blue-50 rounded-xl">
+            <div class="text-4xl mb-3">💨</div>
+            <div class="text-3xl font-bold text-blue-600 mb-2">Instant</div>
+            <div class="text-sm text-gray-700">Modal hiển thị ngay lập tức</div>
+          </div>
+          <div class="text-center p-6 bg-purple-50 rounded-xl">
+            <div class="text-4xl mb-3">✨</div>
+            <div class="text-3xl font-bold text-purple-600 mb-2">5 Tiers</div>
+            <div class="text-sm text-gray-700">
+              Đầy đủ hệ thống hạng thành viên
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="text-center mt-8 text-white">
+        <p class="text-lg mb-2">
+          📄 Xem chi tiết tại
+          <code class="bg-white bg-opacity-20 px-3 py-1 rounded"
+            >ADMIN_USERS_PERFORMANCE_FIX.md</code
+          >
+        </p>
+        <p class="text-sm text-white text-opacity-80">
+          Version 2.0.0 | Updated: 2025-01-14
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
